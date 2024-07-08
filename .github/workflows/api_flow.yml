@@ -30,7 +30,7 @@ jobs:
         python-version: '3.12'
 
     - name: Build image for API
-      run: docker build -t rest-api-app
+      run: docker build -t rest-api-app-test .
 
     - name: Run tests
       run: docker run rest-api-app-test
