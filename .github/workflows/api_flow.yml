@@ -33,4 +33,4 @@ jobs:
       run: docker build -t rest-api-app-test .
 
     - name: Run tests
-      run: docker run rest-api-app-test
+      run: docker run --rm rest-api-app-test
