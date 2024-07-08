@@ -1,5 +1,5 @@
 import unittest, json
-import rest_api as app
+import api.rest_api as app
 
 class FlaskAppTests(unittest.TestCase):
 

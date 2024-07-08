@@ -55,4 +55,4 @@ def delete_books(id: int):
     return jsonify(book), 200
 
 if __name__ == '__main__':
-    create_app.run(debug=True)
+    create_app.run(debug=True, host='0.0.0.0')
