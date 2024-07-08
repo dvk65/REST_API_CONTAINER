@@ -1,11 +1,12 @@
 import unittest, json
-from api import rest_api as app
+from rest_api import create_app
 
 class FlaskAppTests(unittest.TestCase):
+    # app = "http://localhost:5000/books"
 
     def setUp(self):
-        app.create_app.config['TESTING'] = True
-        self.app = app.create_app.test_client()
+        create_app.config['TESTING'] = True
+        self.app = create_app.test_client()
 
     def test_get_books_endpoint(self):
         b = self.app.get('/books')
@@ -49,7 +50,6 @@ class FlaskAppTests(unittest.TestCase):
         self.assertEqual(b.json, {'id': 3, 'title': 'Curls', 'author': 'Cam'})
         self.assertEqual(b.status_code, 200)
     
-
 
 if __name__ == '__main__':
     unittest.main()

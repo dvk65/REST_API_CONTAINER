@@ -1,8 +1,8 @@
 FROM python:3.12-alpine
 
-WORKDIR /tests/test_api
+WORKDIR /api/test_api
 
-COPY . /tests/test_api/
+COPY . /api/test_api/
 
 RUN apk update && \
     apk add --no-cache bash && \
