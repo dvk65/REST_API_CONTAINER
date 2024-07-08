@@ -1,5 +1,5 @@
 import unittest, json
-import api.rest_api as app
+from api import rest_api as app
 
 class FlaskAppTests(unittest.TestCase):
 
@@ -27,6 +27,13 @@ class FlaskAppTests(unittest.TestCase):
                           data=json.dumps({'id': 3, 'title': 'Curls', 'author': 'Cam'}))
         self.assertEqual(b.json, {'location': f'/books/3'})
         self.assertEqual(b.status_code, 200)
+
+    def test_wrong_put_book_endpoint(self):
+        b = self.app.put('/books/5',
+                          content_type='application/json',
+                          data=json.dumps({'number': 5, 'title': 'Dam', 'author': 'Wood'}))
+        self.assertEqual(b.json, {'error': 'Invalid book'})
+        self.assertEqual(b.status_code, 400)
     
     def test_put_book_endpoint(self):
         b = self.app.put('/books/4',

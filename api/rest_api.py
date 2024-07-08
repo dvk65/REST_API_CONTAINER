@@ -22,9 +22,13 @@ def get_book(id):
  return next((b for b in books if b['id'] == id), None)
 
 def book_exists(book):
+    keys = ['title', 'author', 'id']
+    c=0
     for key in book.keys():
-        if key == 'title' or key == 'author' or key =='id':
-            return True
+        if key in keys:
+            c+=1
+    if c==3:
+        return True
     return False
 
 @create_app.route('/books', methods=['POST']) #add
@@ -41,7 +45,7 @@ def post_book():
 @create_app.route('/books/<int:id>', methods=['PUT']) #update
 def put_book(id: int):
     new_book = request.json
-    if not book_exists(new_book):
+    if book_exists(new_book)==False:
         return jsonify({'error': 'Invalid book'}), 400
     return jsonify(new_book), 200
 
