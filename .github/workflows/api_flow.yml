@@ -29,14 +29,14 @@ jobs:
       with:
         python-version: '3.12'
 
-    - name: Build image for API
-      run: docker build -t rest-api-app .
-
-    - name: Run API
-      run: docker run -p 5000:5000 rest-api-app
-
     - name: Build image for testing API
       run: docker build -f Dockerfile.test -t rest-api-app-test .
 
     - name: Run tests image
       run: docker run --rm rest-api-app-test
+
+    - name: Build image for API
+      run: docker build -t rest-api-app .
+
+    - name: Run API
+      run: docker run -p 5000:5000 rest-api-app
