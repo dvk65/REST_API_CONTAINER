@@ -34,9 +34,3 @@ jobs:
 
     - name: Run tests image
       run: docker run --rm rest-api-app-test
-
-    - name: Build image for API
-      run: docker build -t rest-api-app .
-
-    - name: Run API
-      run: docker run -p 5000:5000 rest-api-app
